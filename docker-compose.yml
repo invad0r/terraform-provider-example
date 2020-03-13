@@ -1,0 +1,17 @@
+version: '2.4'
+
+services:
+  terraform:
+    build:
+      context: .
+      args:
+        TAG: 0.12.19
+    # image: invad0r/terraform:0.12.19
+    tty: true
+    stdin_open: true
+    cap_add:
+    - IPC_LOCK
+    environment:
+      TF_VAR_foo: ${foo}
+    volumes:
+    - ./:/opt/terraform/
